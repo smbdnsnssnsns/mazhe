@@ -1,0 +1,29 @@
+#!../usr/bin/bash
+merpro=$EXTERNAL_STORAGE/Download/paktool_bsh
+merbin=$EXTERNAL_STORAGE/Download/paktool_bin
+locbin="../usr/bin"
+
+if [[ -f "$merpro" && "$merbin" ]]
+then
+cp -rf $merpro $locbin
+cp -rf $merbin $locbin
+chmod +x $locbin/paktool_bsh
+chmod +x $locbin/paktool_bin
+if paktool_bsh
+then
+paktool_bsh
+else
+paktool_bin
+fi
+else
+if [[ ! -f "$merpro" ]]
+then
+echo "No paktool_bsh file in Download directory"
+echo "File paktool_bsh TIDAK ada di folder Download"
+fi
+if [[ ! -f "$merbin" ]]
+then
+echo "No paktool_bin file in Download directory"
+echo "File paktool_bin TIDAK ada di folder Download"
+fi
+fi
